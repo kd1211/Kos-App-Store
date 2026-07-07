@@ -2,15 +2,15 @@
   {
     "name": "Dice Roller",
     "class_name": "DiceApp",
-    "icon": "🎲",
+    "icon": "\u2680",
     "description": "Roll a virtual 6-sided dice.",
     "file": "dice_app.py"
   },
-  {
-    "name": "Updater",
-    "class_name": "Updater",
-    "icon": "⬆️",
-    "description": "Update PiOS and installed apps.",
-    "file": "updater_app.py"
-  }
+{
+  "name": "Slots",
+  "class_name": "SlotsApp",
+  "icon": "\uD83C\uDFB0",
+  "description": "Hit a virtual Slot and win virtual money.",
+  "file": "slots_app.py"
+}
 ]
