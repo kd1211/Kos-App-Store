@@ -5,13 +5,12 @@
     "icon": "🎲",
     "description": "Roll a virtual 6-sided dice.",
     "file": "dice_app.py"
-  }
+  },
   {
     "name": "Updater",
     "class_name": "Updater",
-    "icon": "U",
-    "description": "Roll a virtual 6-sided dice.",
+    "icon": "⬆️",
+    "description": "Update PiOS and installed apps.",
     "file": "updater_app.py"
   }
 ]
-
