@@ -13,5 +13,12 @@
     "description": "Spin the reels",
     "folder": "slots",
     "file": "slots_app.py"
+  },
+  {
+    "name": "New Mes",
+    "class_name": "DiceApp",
+    "icon": "📱",
+    "description": "Just_mes",
+    "file": "mes_app.py"
   }
 ]
