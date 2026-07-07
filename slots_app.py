@@ -1,6 +1,6 @@
 import random
 
-class DiceSlotsApp:
+class SlotsApp:
     name = "Dice Slots"
     icon = "D"
 
