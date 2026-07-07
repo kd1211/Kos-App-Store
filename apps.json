@@ -1,17 +1,17 @@
 [
-{
-"name": "Dice Roller",
-"class_name": "DiceApp",
-"icon": "\u2680",
-"description": "Roll a virtual 6-sided dice.",
-"file": "dice_app.py"
-},
-{
-"name": "Slots",
-"class_name": "SlotsApp",
-"icon": "\\U0001F3B0",
-"description": "Spin the reels and win coins.",
-"folder": "slots",
-"file": "slots_app.py"
-}
+  {
+    "name": "Dice",
+    "class_name": "DiceApp",
+    "icon": "🎲",
+    "description": "Roll a virtual dice",
+    "file": "dice_app.py"
+  },
+  {
+    "name": "Slots",
+    "class_name": "SlotsApp",
+    "icon": "🎰",
+    "description": "Spin the reels",
+    "folder": "slots",
+    "file": "slots_app.py"
+  }
 ]
