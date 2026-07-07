@@ -16,7 +16,7 @@
   },
   {
     "name": "New Mes",
-    "class_name": "DiceApp",
+    "class_name": "_Networking",
     "icon": "📱",
     "description": "Just_mes",
     "file": "mes_app.py"
