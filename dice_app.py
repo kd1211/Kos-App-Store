@@ -3,7 +3,7 @@ from ui.framework import App, Button, SCREEN_W, SCREEN_H, STATUS_BAR_H, FONT_MD,
 
 class DiceApp(App):
     name = "Dice Roller"
-    icon = "🎲"
+    icon = "\U0001F3B2"
 
     def on_open(self):
         self.dice_value = 1
