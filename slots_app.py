@@ -1,55 +1,62 @@
 import random
+from ui.framework import App, Button, SCREEN_W, SCREEN_H, STATUS_BAR_H, FONT_MD, FONT_LG
 
-class SlotsApp:
-    name = "Dice Slots"
-    icon = "D"
 
-    def __init__(self, os_):
-        self.os = os_
+class SlotsApp(App):
+    name = "Slots"
+    icon = "🎰"
+
+    def on_open(self):
         self.money = 100
         self.user_class = "Player"
-        self.message = "Press Roll"
+        self.result = "Roll!"
 
-    def draw(self):
-        self.os.lcd.clear()
-
-        self.os.lcd.text(20, 30, "Dice Slots", size=2)
-        self.os.lcd.text(20, 80, f"Money: {self.money}", size=1)
-        self.os.lcd.text(20, 110, f"Class: {self.user_class}", size=1)
-
-        self.os.lcd.text(20, 160, self.message, size=1)
-
-        self.os.lcd.text(40, 220, "[ ROLL ]", size=2)
-        self.os.lcd.text(40, 270, "[ CLASS ]", size=2)
-
-    def update(self, touch):
-        if not touch:
-            return
-
-        x, y = touch
-
-        if 40 <= x <= 160 and 200 <= y <= 250:
-            self.roll()
-
-        elif 40 <= x <= 180 and 250 <= y <= 310:
-            self.change_class()
+        self.buttons = [
+            Button(
+                SCREEN_W // 2 - 60,
+                SCREEN_H - 80,
+                120,
+                44,
+                "Roll",
+                self.roll,
+                font=FONT_MD
+            ),
+            Button(
+                SCREEN_W // 2 - 60,
+                SCREEN_H - 130,
+                120,
+                42,
+                "Class",
+                self.change_class,
+                font=FONT_MD
+            ),
+            Button(
+                SCREEN_W // 2 - 60,
+                SCREEN_H - 180,
+                120,
+                42,
+                "Home",
+                self.os.go_home,
+                font=FONT_MD
+            )
+        ]
 
     def roll(self):
         if self.money < 10:
-            self.message = "Not enough money"
+            self.result = "No money!"
             return
 
         self.money -= 10
 
-        num1 = random.randint(1, 7)
-        num2 = random.randint(1, 7)
-        num3 = random.randint(1, 7)
+        a = random.randint(1, 6)
+        b = random.randint(1, 6)
+        c = random.randint(1, 6)
 
-        self.message = f"Rolled: {num1} {num2} {num3}"
+        self.result = f"{a} {b} {c}"
 
-        if num1 == num2 == num3:
+        if a == b == c:
             self.money += 100
-            self.message = "JACKPOT +100!"
+            self.result = "JACKPOT!"
 
     def change_class(self):
         classes = [
@@ -61,4 +68,30 @@ class SlotsApp:
         index = classes.index(self.user_class)
         self.user_class = classes[(index + 1) % len(classes)]
 
-        self.message = "Class changed"
+    def draw(self, draw, canvas):
+        draw.text(
+            (SCREEN_W // 2, STATUS_BAR_H + 30),
+            "Dice Slots",
+            font=FONT_MD,
+            fill=(255, 255, 255),
+            anchor="mm"
+        )
+
+        draw.text(
+            (SCREEN_W // 2, SCREEN_H // 2 - 40),
+            self.result,
+            font=FONT_LG,
+            fill=(255, 165, 0),
+            anchor="mm"
+        )
+
+        draw.text(
+            (SCREEN_W // 2, SCREEN_H // 2 + 20),
+            f"${self.money} - {self.user_class}",
+            font=FONT_MD,
+            fill=(255, 255, 255),
+            anchor="mm"
+        )
+
+        for b in self.buttons:
+            b.draw(draw)
